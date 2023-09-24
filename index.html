@@ -1,38 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
     <title>Simulador de Chance de Relacionamento</title>
     <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
         body {
             background: linear-gradient(to bottom, #ffcccc, #ff99cc);
             font-family: Arial, sans-serif;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         h1 {
             color: #333;
+            font-size: 36px;
         }
 
         label {
             font-weight: bold;
             color: #555;
+            font-size: 20px;
         }
 
         input[type="text"] {
-            padding: 8px;
+            padding: 12px;
             border: 2px solid #ccc;
             border-radius: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
         }
 
         #barra-progresso {
             background-color: #ddd;
             border: 1px solid #bbb;
             border-radius: 4px;
-            height: 10px;
-            margin-bottom: 10px;
-            width: 100%;
-            display: none;
+            height: 20px;
+            margin-bottom: 20px;
+            width: 80%;
         }
 
         #barra-progresso .progresso {
@@ -43,12 +54,21 @@
         }
 
         #btnTestar {
-            padding: 10px 20px;
+            padding: 16px 32px;
             background-color: #4caf50;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 24px;
+        }
+
+        #direitos {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 12px;
+            color: #555;
         }
     </style>
 </head>
@@ -69,6 +89,8 @@
     </div>
 
     <div id="resultado"></div>
+
+    <div id="direitos">Todos os direitos reservados @IsaqueSilva versão: 0.2</div>
 
     <script>
         function iniciarTeste() {
