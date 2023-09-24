@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simulador de Chance de Relacionamento</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #ffcccc, #ff99cc);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        #barra-progresso {
+            background-color: #ddd;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            height: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            display: none;
+        }
+
+        #barra-progresso .progresso {
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 4px;
+            width: 0;
+        }
+
+        #btnTestar {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simulador de Chance de Relacionamento</h1>
+
+    <label for="nome1">Nome 1:</label>
+    <input type="text" id="nome1" onkeyup="verificarRelacionamento()"><br><br>
+
+    <label for="nome2">Nome 2:</label>
+    <input type="text" id="nome2" onkeyup="verificarRelacionamento()"><br><br>
+
+    <button id="btnTestar" onclick="iniciarTeste()">Testar</button><br><br>
+
+    <div id="barra-progresso">
+        <div class="progresso"></div>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        function iniciarTeste() {
+            var barraProgresso = document.getElementById("barra-progresso");
+
+            barraProgresso.style.display = "block";
+            barraProgresso.classList.remove("completo");
+
+            var progresso = document.querySelector(".progresso");
+            var largura = 0;
+            var id = setInterval(frame, 10);
+
+            function frame() {
+                if (largura >= 100) {
+                    clearInterval(id);
+                    barraProgresso.classList.add("completo");
+                    gerarRelacionamento();
+                } else {
+                    largura++;
+                    progresso.style.width = largura + "%";
+                }
+            }
+        }
+
+        function gerarRelacionamento() {
+            var resultado = document.getElementById("resultado");
+            var relacoes = [
+                "Eita..",
+                "Impossível",
+                "Só não vai pq tem alguém de olho..",
+                "Uma das partes quer,mas a outra..",
+                "Amigos",
+                "Bffs",
+                "Inimigos",
+                "Muito sexo",
+                "No off já acontece..",
+                "Seja lá quem pediu esse teste, é muito iludido..",
+                "Quem sabe um dia"
+        
+            ];
+
+            // Gera um número aleatório de 0 a 10
+            var indice = Math.floor(Math.random() * 11);
+
+            resultado.innerHTML = "<p>" + relacoes[indice] + "</p>";
+        }
+    </script>
+
+</body>
+</html>
